@@ -1,0 +1,48 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="YQM_CS_LOGS_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="CSLogs" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bname"/>
+                </Key>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstName" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Cleaning station name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserLgd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="User log" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ReadLog" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bname"/>
+                </Key>
+                <Property Name="Fname" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full name of User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Clst" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Cleaning station" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstName" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Cleaning station name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserLgd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="User log" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Stations" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Clst"/>
+                </Key>
+                <Property Name="Clst" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Cln. Stn" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstName" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstCfcheck" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Cln.Chk" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstSkip" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Skip.Stats" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstUserlog" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Logg.Usr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClstLogout" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Logout" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="YQM_CS_LOGS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="CSLogsSet" EntityType="YQM_CS_LOGS_SRV.CSLogs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReadLogSet" EntityType="YQM_CS_LOGS_SRV.ReadLog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="StationsSet" EntityType="YQM_CS_LOGS_SRV.Stations" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/YQM_CS_LOGS_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/YQM_CS_LOGS_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

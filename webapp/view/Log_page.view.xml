@@ -1,0 +1,56 @@
+<mvc:View controllerName="com.merckgroup.qm.z_cslog.controller.Log_page" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" displayBlock="true" xmlns:f="sap.ui.layout.form" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}" class="sapUiSizeCompact">
+				<content>
+					<f:SimpleForm editable="true" title="" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="6" labelSpanM="4" labelSpanS="12"
+						adjustLabelSpan="false" emptySpanXL="6" emptySpanL="3" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false">
+						<f:content>
+							<Label text="User Name"/>
+							<Text text="{logModel>/logData/Fname}"/>
+							<Label text="Previous Log-on"/>
+							<Text text="{logModel>/logData/PName}"
+								visible="{parts:['logModel>/logData/UserLgd','logModel>/logData/PName'], formatter:'.formatter.loginHistoryEnabled'}"/>
+							<Label text="Log-on to" required="true"/>
+							<HBox visible="{= ${logModel>/logData/UserLgd} === 'N' ? true : false }">
+								<VBox>
+									<Input value="{logModel>/logData/Clst}" visible="{= ${device>/system/desktop}}" change="onChangeClst" showValueHelp="true"
+										showSuggestion="true" valueHelpRequest="handleValueHelp" suggestionItems="{logModel>/StationsSet}">
+										<suggestionItems>
+											<core:ListItem text="{logModel>Clst}" additionalText="{logModel>ClstName}"/>
+										</suggestionItems>
+									</Input>
+									<Input value="{logModel>/logData/Clst}" visible="{= !${device>/system/desktop}}" valueHelpRequest="onPressScan" valueHelpOnly="true"
+										showValueHelp="true" change="onChangeClst"/>
+									<Text text="{logModel>/logData/ClstName}"/>
+									<layoutData>
+										<l:GridData span="XL1 L2 M6 S9"/>
+									</layoutData>
+								</VBox>
+								<!--								<Button visible="{= !${device>/system/desktop} }" tooltip="Scan" text="Scan" press="onPressScan" icon="sap-icon://bar-code"
+									type="Transparent">
+									<layoutData>
+										<l:GridData span="XL1 L1 M2 S3"/>
+									</layoutData>
+								</Button>-->
+							</HBox>
+							<Label text="Logged into"></Label>
+							<Text visible="{= ${logModel>/logData/UserLgd} === 'N' ? false : true }" text="{logModel>/logData/PName}"></Text>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Log-on" press="onPressIn"
+							visible="{parts:['logModel>/logData/UserLgd','logModel>/logData/ClstName'], formatter:'.formatter.handleLoginEnabled'}"/>
+						<Button type="Accept" text="Log-off" press="onPressOut" visible="{= ${logModel>/logData/UserLgd} === 'N' ? false : true }"/>
+						<Button type="Reject" text="Cancel" press="onPressCancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,48 @@
+{
+    "resources": [
+        {
+            "name": "fragments/stations.fragment.xml"
+        },
+        {
+            "name": "controller/Log_page.controller.js"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "view/Log_page.view.xml"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/logModel.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}
